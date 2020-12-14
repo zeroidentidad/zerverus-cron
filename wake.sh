@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # ping when your job starts
-ping -q -c4 zerverus-d418bf.us1.kinto.io
+curl https://zerverus-d418bf.us1.kinto.io/api/extraviados?p=1
 
 wake.sh
 
 # ping when your job is finished
-ping -q -c4 zerverus-d418bf.us1.kinto.io
+ping zerverus-d418bf.us1.kinto.io
 
 # scheduling guide https://crontab.guru/

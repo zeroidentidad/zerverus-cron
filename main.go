@@ -4,22 +4,25 @@ import (
 	"bytes"
 	"log"
 	"os/exec"
+	"time"
 )
 
 func main() {
 
 	proc := exec.Command("./wake.sh")
-	out := bytes.NewBuffer([]byte{})
 
-	proc.Stdout = out
+	var out bytes.Buffer
+	proc.Stdout = &out
 
-	err := proc.Run()
+	err := proc.Start()
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
 
-	if proc.ProcessState.Success() {
-		log.Println("Proceso ejecutado, salida:")
+	for {
+		time.Sleep(20 * time.Second)
+		log.Println("Ejecutando, salida:")
 		log.Println(out.String())
+		out.Reset()
 	}
 }
