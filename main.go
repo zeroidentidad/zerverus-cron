@@ -20,7 +20,7 @@ func main() {
 	}
 
 	for {
-		time.Sleep(20 * time.Second)
+		time.Sleep(360 * time.Second)
 		log.Println("Ejecutando, salida:")
 		log.Println(out.String())
 		out.Reset()
